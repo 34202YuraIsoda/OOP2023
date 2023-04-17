@@ -34,5 +34,11 @@ namespace WindowsFormsApp1 {
         private void label1_Click(object sender, EventArgs e) {
 
         }
+
+        //イベントハンドラ
+        private void btPow_Click(object sender, EventArgs e) {
+            double result = Math.Pow((double)nudX.Value, (double)nudY.Value);
+            tbResult.Text = result.ToString();
+        }
     }
 }
