@@ -37,8 +37,13 @@ namespace WindowsFormsApp1 {
 
         //イベントハンドラ
         private void btPow_Click(object sender, EventArgs e) {
+
             double result = Math.Pow((double)nudX.Value, (double)nudY.Value);
             tbResult.Text = result.ToString();
+
+            //一行で書く場合
+            //tbResult.Text = (Math.Pow((double)nudX.Value, (double)nudY.Value)).ToString();
+
         }
     }
 }
