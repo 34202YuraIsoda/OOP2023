@@ -27,7 +27,6 @@ namespace BallApp {
 
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
-            this.Text = "BallGame";
             this.MouseClick += Program_MouseClick;
 
 
@@ -51,6 +50,7 @@ namespace BallApp {
 
             balls.Add(soccerBall);
             pbs.Add(pb);
+            this.Text = "ボールの数(" + balls.Count + ")";
 
             moveTimer.Start();  //タイマースタート
 
