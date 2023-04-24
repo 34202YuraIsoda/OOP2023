@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BallApp {
-    class SoccerBall :Obj{
+    class TennisBall : Obj {
 
         //フィールド
         private double moveX;   //移動量(x方向)
         private double moveY;   //移動量(y方向)
         private static int count;
         Random random = new Random();   //乱数インスタンス
- 
+
         //コンストラクタ
-        public SoccerBall(double xp, double yp) 
-            :base(xp,yp,@"pic\soccer_ball.png") {
+        public TennisBall(double xp, double yp)
+            : base(xp, yp, @"pic\tennis_ball.png") {
 
             int rndX = random.Next(-15, 15);
             int rndY = random.Next(-15, 15);
