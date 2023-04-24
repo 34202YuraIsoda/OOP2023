@@ -25,6 +25,7 @@ namespace BallApp {
 
         public Program() {
 
+            this.Text = "ボールの数(0)";
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
             this.MouseClick += Program_MouseClick;
