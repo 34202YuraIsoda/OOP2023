@@ -9,8 +9,6 @@ namespace BallApp {
     class SoccerBall :Obj{
 
         //フィールド
-        private double moveX;   //移動量(x方向)
-        private double moveY;   //移動量(y方向)
         private static int count;
         Random random = new Random();   //乱数インスタンス
  
@@ -29,14 +27,12 @@ namespace BallApp {
         }
 
         //プロパティ
-        public double MoveX { get => moveX; set => moveX = value; }
-        public double MoveY { get => moveY; set => moveY = value; }
         public static int Count { get => count; set => count = value; }
 
         //メソッド
         public override void Move() {
 
-            Console.WriteLine("x = {0} , y = {1}", PosX, PosY);
+            //Console.WriteLine("x = {0} , y = {1}", PosX, PosY);
 
             if (PosX > 740 || PosX < 0)
             {

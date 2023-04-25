@@ -52,7 +52,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoccerBall.cs" />
-    <Compile Include="Tennis_ball.cs" />
+    <Compile Include="Tennisball.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -11,9 +11,10 @@ namespace BallApp {
 
         private Timer moveTimer;    //タイマー用
         private SoccerBall soccerBall;
+        private TennisBall tennisBall;
         private PictureBox pb;
 
-        private List<SoccerBall> balls = new List<SoccerBall>();    //ボールインスタンス格納用
+        private List<Obj> balls = new List<Obj>();  //サッカーボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
 
@@ -41,16 +42,30 @@ namespace BallApp {
         private void Program_MouseClick(object sender, MouseEventArgs e) {
 
             //ボールインスタンスを生成
-            soccerBall = new SoccerBall(e.X - 25, e.Y - 25);
-            pb = new PictureBox();   //画像を表示するコントロール
-            pb.Image = soccerBall.Image;
-            pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);    //画像の位置
-            pb.Size = new Size(50, 50); //画像の表示サイズ
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
-            pb.Parent = this;
+            if (e.Button == MouseButtons.Left){
+                soccerBall = new SoccerBall(e.X - 25, e.Y - 25);
+                pb = new PictureBox();   //画像を表示するコントロール
+                pb.Image = soccerBall.Image;
+                pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);    //画像の位置
+                pb.Size = new Size(50, 50); //画像の表示サイズ
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
+                pb.Parent = this;
+                balls.Add(soccerBall);
+                pbs.Add(pb);
+            }else if (e.Button == MouseButtons.Right){
+                tennisBall = new TennisBall(e.X - 25, e.Y - 25);
+                pb = new PictureBox();   //画像を表示するコントロール
+                pb.Image = tennisBall.Image;
+                pb.Location = new Point((int)tennisBall.PosX, (int)tennisBall.PosY);    //画像の位置
+                pb.Size = new Size(50, 50); //画像の表示サイズ
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
+                pb.Parent = this;
+                balls.Add(tennisBall);
+                pbs.Add(pb);
 
-            balls.Add(soccerBall);
-            pbs.Add(pb);
+            }
+
+
             this.Text = "ボールの数(" + balls.Count + ")";
 
             moveTimer.Start();  //タイマースタート
