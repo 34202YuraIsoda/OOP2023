@@ -91,14 +91,8 @@ namespace BallApp {
         private void MoveTimer_Tick(object sender, EventArgs e) {
 
             for (int i = 0; i < balls.Count; i++) {
-                balls[i].Move(); //移動
+                balls[i].Move(pbBar,pbs[i]); //移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);    //画像の位置
-                if (balls[i].PosX >= bar.PosX && balls[i].PosX <= bar.PosX + pbBar.Size.Width
-                    && balls[i].PosY >= bar.PosY && balls[i].PosY <= bar.PosY + pbBar.Size.Height)
-                {
-                    balls[i].MoveX = balls[i].MoveX * -1;
-                    balls[i].MoveY = balls[i].MoveY * -1;
-                }
             }
         }
 
