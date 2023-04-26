@@ -4,32 +4,32 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BallApp {
-    class Bar {
+    class Bar :Obj{
 
-        private Image image;
-        private double posX;
-        private double posY;
-        private double moveX;
-
-        public Image Image { get => image; set => image = value; }
-        public double PosX { get => posX; set => posX = value; }
-        public double PosY { get => posY; set => posY = value; }
-        public double MoveX { get => moveX; set => moveX = value; }
-
-        public Bar() {
+        public Bar(double xp,double yp)
+            :base(xp,yp, @"pic\bar.png") {
             MoveX = 10;
-            PosX = 300;
-            PosY = 500;
-            Image = Image.FromFile(@"pic\bar.png");
         }
 
-        public void move(int vector) {
-            if (MoveX * vector + PosX > 640 || MoveX * vector + PosX < 0) {
-                vector = 0;
+        public override void Move() {
+        }
+
+        public void Move(Keys direction) {
+            if (direction == Keys.Right) {
+                if (PosX < 640){
+                    PosX += MoveX;
+                }
             }
-                PosX += MoveX * vector;
+            else if (direction == Keys.Left){
+                if (PosX > 0){
+                    PosX -= MoveX;
+                }
+            }
+
+            Console.WriteLine("x:" + PosX + "y:" + PosY);
         }
 
     }

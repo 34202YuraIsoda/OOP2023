@@ -11,8 +11,8 @@ namespace BallApp {
 
         private Timer moveTimer;    //タイマー用
         private PictureBox ball_pb;
-        private PictureBox bar_pb;
-        private Bar bar;
+        private PictureBox pbBar;   //Bar表示用
+        private Bar bar;            //Barインスタンス格納用
 
         private List<Obj> balls = new List<Obj>();  //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //ボール表示用
@@ -26,6 +26,7 @@ namespace BallApp {
 
         public Program() {
 
+            //フォーム
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
 
@@ -35,33 +36,26 @@ namespace BallApp {
             this.MouseClick += Program_MouseClick;
             this.KeyDown += Program_KeyDown;
 
+            //Barインスタンス生成
+            bar = new Bar(300,450);
+            pbBar = new PictureBox();
+            pbBar.Image = bar.Image;
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
+            pbBar.Size = new Size(150, 10);
+            pbBar.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbBar.Parent = this;
 
             moveTimer = new Timer();
             moveTimer.Interval = 1; //タイマーのインターバル(ms)
             moveTimer.Tick += MoveTimer_Tick;   //デリゲート登録
 
-            bar = new Bar();
-            bar_pb = new PictureBox();
-            bar_pb.Size = new Size(150, 10);
-            bar_pb.Image = bar.Image;
-            bar_pb.Location = new Point((int)bar.PosX, (int)bar.PosY);
-            bar_pb.SizeMode = PictureBoxSizeMode.StretchImage;
-            bar_pb.Parent = this;
-            bar = new Bar();
 
         }
 
         //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.A) {
-                bar.move(-1);
-                bar_pb.Location = new Point((int)bar.PosX, (int)bar.PosY);    //画像の位置
-            }
-            else if(e.KeyCode == Keys.D){
-                bar.move(1);
-                bar_pb.Location = new Point((int)bar.PosX, (int)bar.PosY);    //画像の位置
-            }
-
+            bar.Move(e.KeyData);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);    //画像の位置
         }
 
         //マウスクリック時のイベントハンドラ
@@ -99,6 +93,12 @@ namespace BallApp {
             for (int i = 0; i < balls.Count; i++) {
                 balls[i].Move(); //移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);    //画像の位置
+                if (balls[i].PosX >= bar.PosX && balls[i].PosX <= bar.PosX + pbBar.Size.Width
+                    && balls[i].PosY >= bar.PosY && balls[i].PosY <= bar.PosY + pbBar.Size.Height)
+                {
+                    balls[i].MoveX = balls[i].MoveX * -1;
+                    balls[i].MoveY = balls[i].MoveY * -1;
+                }
             }
         }
 
