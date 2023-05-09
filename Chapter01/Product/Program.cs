@@ -17,19 +17,36 @@ namespace ProductSample {
             //Console.WriteLine(daifuku.Name + "(税込)：" + daifuku.GetPriceIncludingTax());
             #endregion
 
-//            DateTime date = new DateTime(2023, 5, 8);
-            DateTime date = DateTime.Today;
-            TimeSpan timeSpan = new TimeSpan(10,0,0,0);
+            #region 0508演習1
+            //DateTime date = new DateTime(2023, 5, 8);
+            //DateTime date = DateTime.Today;
+            //TimeSpan timeSpan = new TimeSpan(10, 0, 0, 0);
 
             //10日後を求める
-            DateTime daysAfter10 = date.AddDays(10);
+            //DateTime daysAfter10 = date.AddDays(10);
 
             //10日前を求める
-            DateTime daysBefore10 = date.Subtract(timeSpan);
+            //DateTime daysBefore10 = date.Subtract(timeSpan);
 
-            Console.WriteLine("今日の日付：" + date.Year + "年" + date.Month + "月" + date.Day + "日");
-            Console.WriteLine("10日後：" + daysAfter10.Year + "年" + daysAfter10.Month + "月" + daysAfter10.Day + "日");
-            Console.WriteLine("10日前：" + daysBefore10.Year + "年" + daysBefore10.Month + "月" + daysBefore10.Day + "日");
+            //Console.WriteLine("今日の日付：" + date.Year + "年" + date.Month + "月" + date.Day + "日");
+            //Console.WriteLine("10日後：" + daysAfter10.Year + "年" + daysAfter10.Month + "月" + daysAfter10.Day + "日");
+            //Console.WriteLine("10日前：" + daysBefore10.Year + "年" + daysBefore10.Month + "月" + daysBefore10.Day + "日");
+            #endregion
+
+            Console.WriteLine("誕生日を入力");
+            Console.Write("西暦：");
+            int year = int.Parse(Console.ReadLine());
+            Console.Write("月：");
+            int month = int.Parse(Console.ReadLine());
+            Console.Write("日：");
+            int day = int.Parse(Console.ReadLine());
+
+            DateTime barthday = new DateTime(year, month, day);
+            DateTime today = DateTime.Today;
+
+            TimeSpan barthdayToToday = today - barthday;
+
+            Console.WriteLine("あなたが生まれて今日で" + barthdayToToday.Days + "日目です。");
         }
     }
 }
