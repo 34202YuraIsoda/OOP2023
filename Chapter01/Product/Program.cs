@@ -35,6 +35,7 @@ namespace ProductSample {
             //Console.WriteLine("10日前：" + daysBefore10.Year + "年" + daysBefore10.Month + "月" + daysBefore10.Day + "日");
             #endregion
 
+            #region 演習２
             Console.WriteLine("誕生日を入力");
             Console.Write("西暦：");
             int year = int.Parse(Console.ReadLine());
@@ -49,6 +50,7 @@ namespace ProductSample {
             TimeSpan barthdayToToday = today - barthday;
 
             Console.WriteLine("あなたが生まれて今日で" + barthdayToToday.Days + "日目です。");
+            #endregion
 
             Console.WriteLine(DayOfWeekJp[(int)barthday.DayOfWeek]);
         }
