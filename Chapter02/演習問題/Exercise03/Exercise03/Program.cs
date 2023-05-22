@@ -10,12 +10,11 @@ namespace Exercise03 {
         static void Main(string[] args) {
 
             var sales = new SalesCounter(@"data\sales.csv");
-            Console.WriteLine("**売上集計**");
+            Console.WriteLine("　**売上集計**");
             Console.WriteLine("1:店舗別売り上げ");
             Console.WriteLine("2:商品カテゴリー別売り上げ");
             Console.Write(">");
-            int selection = int.Parse(Console.ReadLine());
-            switch (selection) {
+            switch (int.Parse(Console.ReadLine())) {
                 case 1:
                     var amountPerStore = sales.GetPerStoreSales();
                     foreach (var obj in amountPerStore) {
