@@ -32,9 +32,9 @@ namespace Exercise03 {
             var dict = new SortedDictionary<string, int>();
             foreach (var sale in _sales) {
                 if (dict.ContainsKey(sale.ProductCategory))
-                    dict[sale.ProductCategory] += sale.Amount;//商品名が既に存在する（売り上げ加算）
+                    dict[sale.ProductCategory] += sale.Amount;//商品カテゴリーが既に存在する（売り上げ加算）
                 else
-                    dict[sale.ProductCategory] = sale.Amount;//商品名が存在しない（新規格納）
+                    dict[sale.ProductCategory] = sale.Amount;//商品カテゴリーが存在しない（新規格納）
             }
             return dict;
         }
