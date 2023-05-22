@@ -10,14 +10,27 @@ namespace Exercise03 {
         static void Main(string[] args) {
 
             var sales = new SalesCounter(@"data\sales.csv");
-            var amountPerStore = sales.GetPerStoreSales();
-            var amountPerProductCategory = sales.GetPerProductCategorySales();
-            foreach (var obj in amountPerStore) {
-                Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
-            }
-            Console.WriteLine();
-            foreach (var obj in amountPerProductCategory) {
-                Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+            Console.WriteLine("**売上集計**");
+            Console.WriteLine("1:店舗別売り上げ");
+            Console.WriteLine("2:商品カテゴリー別売り上げ");
+            Console.Write(">");
+            int selection = int.Parse(Console.ReadLine());
+            switch (selection) {
+                case 1:
+                    var amountPerStore = sales.GetPerStoreSales();
+                    foreach (var obj in amountPerStore) {
+                        Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+                    }
+                    break;
+                case 2:
+                    var amountPerProductCategory = sales.GetPerProductCategorySales();
+                    foreach (var obj in amountPerProductCategory) {
+                        Console.WriteLine("{0} {1:C}", obj.Key, obj.Value);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("入力値が不正です。");
+                    break;
             }
         }
     }
