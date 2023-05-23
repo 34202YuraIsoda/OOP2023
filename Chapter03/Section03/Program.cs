@@ -11,6 +11,14 @@ namespace Section03 {
                "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
 
+            var names = list.ConvertAll(s => s.ToLower());
+            names.ForEach(s => Console.WriteLine(s));
+
+
+            //var exists = list.Exists(s => s[2] == 'k');
+            //var name = list.Find(s => s.Length == 6);
+            //Console.WriteLine(name);
+
         }
     }
 }
