@@ -30,7 +30,7 @@ namespace Exercise02 {
                 if (string.IsNullOrEmpty(city)) {
                     break;
                 }
-                Console.WriteLine(names.FindIndex(n => city == n));
+                Console.WriteLine(names.FindIndex(n => city.Equals(n)));
             } while (true);
         }
 
