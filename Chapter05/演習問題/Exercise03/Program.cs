@@ -71,13 +71,15 @@ namespace Exercise03 {
             Console.WriteLine(connectedText);
 
             //var array = text.Split(' ').ToArray();
-            //var sb = new StringBuilder(array[0]);
-            //foreach (var word in array.Skip(1)) {
-            //sb.Append(' ');
-            //sb.Append(word);
-            //}
-            //var createWords = sb.ToString();
-            //Console.WriteLine(createWords);模範解答
+            //if(array.Length > 0){
+                //var sb = new StringBuilder(array[0]);
+                //foreach (var word in array.Skip(1)) {
+                    //sb.Append(' ');
+                    //sb.Append(word);
+                //}
+                //var createWords = sb.ToString();
+                //Console.WriteLine(createWords);
+            //}模範解答
         }
 
     }
