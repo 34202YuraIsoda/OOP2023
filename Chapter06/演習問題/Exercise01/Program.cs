@@ -52,6 +52,7 @@ namespace Exercise01 {
 
         private static void Exercise1_5(int[] numbers) {
             Console.WriteLine(numbers.Distinct().Where(n => 10 < n).Count());
+            //Whereいらない
         }
     }
 }
