@@ -91,10 +91,10 @@ namespace Exercise04 {
             }
 
 #endif
-            Console.WriteLine("実行時間 = {0}", sw.Elapsed.ToString(@"ss\.fffff"));
 
             #endregion
 #endif
+            Console.WriteLine("実行時間 = {0}", sw.Elapsed.ToString(@"ss\.fffff"));
         }
 
         static string ToJapanese(string key) {
