@@ -49,27 +49,37 @@ namespace Exercise02 {
 
 
         private static void Exercise2_2(List<Book> books) {
-
+            var bookExtracted = books.Count(n=>n.Title.Contains("C#"));
+            Console.WriteLine("{0}冊",bookExtracted);
         }
 
         private static void Exercise2_3(List<Book> books) {
-
+            var bookPageAvg = books.Where(n => n.Title.Contains("C#")).Average(n=>n.Pages);
+            Console.WriteLine(bookPageAvg);
         }
 
         private static void Exercise2_4(List<Book> books) {
-
+            var book = books.FirstOrDefault(n => n.Price >= 4000);
+            Console.WriteLine(book.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
-
+            var bookExtractedMaxPage = books.Where(n => n.Price < 4000).Max(n=>n.Pages);
+            Console.WriteLine(bookExtractedMaxPage);
         }
 
         private static void Exercise2_6(List<Book> books) {
-
+            var bookExtracted = books.Where(n => n.Pages >= 400).OrderByDescending(n=>n.Price);
+            foreach (var book in bookExtracted) {
+                Console.WriteLine(book.Title);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {
-
+            var bookExtracted = books.Where(n=>n.Title.Contains("C#") && n.Pages<=500);
+            foreach (var book in bookExtracted) {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 
