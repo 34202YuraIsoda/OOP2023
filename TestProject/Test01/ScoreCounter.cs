@@ -27,7 +27,7 @@ namespace Test01 {
             }
 
             return students;
-            
+
         }
 
         //メソッドの概要： 科目別の合計点数を求める
