@@ -17,13 +17,19 @@ namespace Exercise02 {
 
             // 7.2.3
             Console.WriteLine("用語の数：{0}", abbrs.Count);
-            abbrs.remove("IOC");
+            if (abbrs.remove("IOC")) {
+                Console.WriteLine("削除しました");
+            }
             Console.WriteLine("用語の数：{0}", abbrs.Count);
+            if (!abbrs.remove("IOC")) {
+                Console.WriteLine("削除に失敗しました");
+            }
+            Console.WriteLine("用語の数：{0}", abbrs.Count);
+            Console.WriteLine();
 
             // 7.2.4
             // IEumerable<> を実装したので、LINQが使える
-            abbrs.
-
+            abbrs.Where(abb => abb.Key.Length == 3).ToList().ForEach(abb=> { Console.WriteLine("{0}={1}", abb.Key, abb.Value); });
         }
     }
 }
