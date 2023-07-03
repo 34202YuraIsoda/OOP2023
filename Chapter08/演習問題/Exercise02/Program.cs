@@ -12,17 +12,17 @@ namespace Exercise02 {
             var today = DateTime.Today;
 
             foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
-                Console.WriteLine(dateTime.ToString("yy/MM/ddの次週の") + dayOfWeek + "：" + NextDay(dateTime, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
+                Console.WriteLine("{0}の次週の{1}：{2}",dateTime.ToString("yy/MM/dd"),dayOfWeek,NextWeek(dateTime, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
             }
 
             Console.WriteLine();
 
             foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
-                Console.WriteLine(today.ToString("yy/MM/ddの次週の") + dayOfWeek + "：" + NextDay(today,(DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
+                Console.WriteLine("{0}の次週の{1}：{2}", today.ToString("yy/MM/dd"), dayOfWeek, NextWeek(today, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
             }
         }
 
-        public static DateTime NextDay(DateTime date, DayOfWeek dayOfWeek) {
+        public static DateTime NextWeek(DateTime date, DayOfWeek dayOfWeek) {
             var days = (int)dayOfWeek - (int)(date.DayOfWeek) + 7;
             return date.AddDays(days);
         }
