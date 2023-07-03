@@ -18,14 +18,14 @@ namespace Exercise03 {
 
     class TimeWatch {
 
-        private DateTime dateTime;
+        private DateTime _dateTime;
 
         public void Start() {
-            dateTime = DateTime.Now;
+            _dateTime = DateTime.Now;
         }
 
         public TimeSpan Stop() {
-            return DateTime.Now - dateTime;
+            return DateTime.Now - _dateTime;
         }
 
     }
