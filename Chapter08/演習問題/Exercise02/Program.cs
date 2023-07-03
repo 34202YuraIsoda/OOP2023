@@ -8,10 +8,17 @@ namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
 
-            DateTime dateTime = DateTime.Today;
+            var dateTime = new DateTime(2017, 01, 01);
+            var today = DateTime.Today;
 
             foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
-                Console.WriteLine(NextDay(dateTime,(DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(dddd)"));
+                Console.WriteLine(dateTime.ToString("yy/MM/ddの次週の") + dayOfWeek + "：" + NextDay(dateTime, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
+            }
+
+            Console.WriteLine();
+
+            foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
+                Console.WriteLine(today.ToString("yy/MM/ddの次週の") + dayOfWeek + "：" + NextDay(today,(DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
             }
         }
 
