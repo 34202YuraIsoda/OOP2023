@@ -10,7 +10,7 @@ namespace Exercise03 {
         static void Main(string[] args) {
             var tw = new TimeWatch();
             tw.Start();
-            Thread.Sleep(1000);
+            Thread.Sleep(2525);
             TimeSpan duration = tw.Stop();
             Console.WriteLine("処理時間は{0}ミリ秒でした", duration.TotalMilliseconds);
         }
@@ -18,7 +18,7 @@ namespace Exercise03 {
 
     class TimeWatch {
 
-        public DateTime dateTime { get; private set; }
+        private DateTime dateTime;
 
         public void Start() {
             dateTime = DateTime.Now;
