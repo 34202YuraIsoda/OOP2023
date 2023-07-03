@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Exercise03 {
@@ -17,7 +18,15 @@ namespace Exercise03 {
 
     class TimeWatch {
 
+        public DateTime dateTime { get; private set; }
 
+        public void Start() {
+            dateTime = DateTime.Now;
+        }
+
+        public TimeSpan Stop() {
+            return DateTime.Now - dateTime;
+        }
 
     }
 }
