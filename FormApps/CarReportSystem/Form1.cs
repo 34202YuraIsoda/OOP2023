@@ -29,6 +29,7 @@ namespace CarReportSystem {
                 CarImage = pbCarImage.Image
             };
             CarReports.Add(CarReport);
+            btModifyReport.Enabled = true;
         }
 
         public CarReport.MakerGroup GetMaker() {
@@ -40,18 +41,55 @@ namespace CarReportSystem {
             return CarReport.MakerGroup.その他;
         }
 
+        //指定したメーカーのラジオボタンをセット
+        private void SetSelectedMaker(string makerName) {
+            foreach (var item in gbMaker.Controls) {
+                if (((RadioButton)item).Text == makerName) {
+                    ((RadioButton)item).Checked = true;
+                    break;
+                }
+            }
+        }
+
         private void btImageOpen_Click(object sender, EventArgs e) {
             ofdImageFileOpen.ShowDialog();
             pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
         }
 
+        //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            //var n = dgvCarReports.CurrentCell.RowIndex;
-            //CarReports.RemoveAt(n);
+            if (CarReports.Count != 0) {
+                CarReports.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            btModifyReport.Enabled = false; //マスクする
+        }
+
+        //レコードの選択時
+        private void dgvCarReports_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            int serectedCurrentRowIndex = dgvCarReports.CurrentCell.RowIndex;
+            dtpDate.Value = CarReports[serectedCurrentRowIndex].Date;
+            cbAuthor.Text = CarReports[serectedCurrentRowIndex].Author;
+            SetSelectedMaker(CarReports[serectedCurrentRowIndex].Maker.ToString());
+            cbCarName.Text = CarReports[serectedCurrentRowIndex].CarName;
+            tbReport.Text = CarReports[serectedCurrentRowIndex].Report;
+            pbCarImage.Image = CarReports[serectedCurrentRowIndex].CarImage;
+        }
+
+        //更新ボタンイベントハンドラ
+        private void btModifyReport_Click(object sender, EventArgs e) {
+            int serectedCurrentRowIndex = dgvCarReports.CurrentCell.RowIndex;
+            CarReports[serectedCurrentRowIndex].Date = dtpDate.Value;
+            CarReports[serectedCurrentRowIndex].Author = cbAuthor.Text;
+            CarReports[serectedCurrentRowIndex].Maker = GetMaker();
+            CarReports[serectedCurrentRowIndex].CarName = cbCarName.Text;
+            CarReports[serectedCurrentRowIndex].Report = tbReport.Text;
+            CarReports[serectedCurrentRowIndex].CarImage = pbCarImage.Image;
+            dgvCarReports.Refresh();
+
         }
     }
 }
