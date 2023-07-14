@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarReportSystem {
-    public partial class VersionForm : Form {
-        public VersionForm() {
+    public partial class Form2 : Form {
+        public Form2() {
             InitializeComponent();
         }
 
-        private void btOk_Click(object sender, EventArgs e) {
-            this.Close();
+        private void btOK_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }
