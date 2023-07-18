@@ -12,6 +12,7 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
+        int mode = 0;
 
         public Form1() {
             InitializeComponent();
@@ -98,8 +99,9 @@ namespace CarReportSystem {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog();
-            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
+                pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            }
         }
 
         //削除ボタンイベントハンドラ
@@ -118,13 +120,16 @@ namespace CarReportSystem {
         //レコードの選択時
         private void dgvCarReports_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             ModifyDeleteEnabled(true);
-            int serectedCurrentRowIndex = dgvCarReports.CurrentCell.RowIndex;
-            dtpDate.Value = CarReports[serectedCurrentRowIndex].Date;
-            cbAuthor.Text = CarReports[serectedCurrentRowIndex].Author;
-            SetSelectedMaker(CarReports[serectedCurrentRowIndex].Maker.ToString());
-            cbCarName.Text = CarReports[serectedCurrentRowIndex].CarName;
-            tbReport.Text = CarReports[serectedCurrentRowIndex].Report;
-            pbCarImage.Image = CarReports[serectedCurrentRowIndex].CarImage;
+            if (dgvCarReports.CurrentCell != null) {
+                dtpDate.Value = CarReports[dgvCarReports.CurrentCell.RowIndex].Date;
+                cbAuthor.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].Author;
+                SetSelectedMaker(CarReports[dgvCarReports.CurrentCell.RowIndex].Maker.ToString());
+                cbCarName.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].CarName;
+                tbReport.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].Report;
+                pbCarImage.Image = CarReports[dgvCarReports.CurrentCell.RowIndex].CarImage;
+            } else if (dgvCarReports.CurrentCell == null) {
+                EditFieldReset();
+            }
         }
 
         private void ModifyDeleteEnabled(bool enabled) {
@@ -139,15 +144,16 @@ namespace CarReportSystem {
 
         //更新ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
-            int serectedCurrentRowIndex = dgvCarReports.CurrentCell.RowIndex;
-            CarReports[serectedCurrentRowIndex].Date = dtpDate.Value;
-            CarReports[serectedCurrentRowIndex].Author = cbAuthor.Text;
-            CarReports[serectedCurrentRowIndex].Maker = GetMaker();
-            CarReports[serectedCurrentRowIndex].CarName = cbCarName.Text;
-            CarReports[serectedCurrentRowIndex].Report = tbReport.Text;
-            CarReports[serectedCurrentRowIndex].CarImage = pbCarImage.Image;
-            EditFieldReset();
-            dgvCarReports.Refresh();    //一覧更新
+            if (dgvCarReports.CurrentCell != null) {
+                CarReports[dgvCarReports.CurrentCell.RowIndex].Date = dtpDate.Value;
+                CarReports[dgvCarReports.CurrentCell.RowIndex].Author = cbAuthor.Text;
+                CarReports[dgvCarReports.CurrentCell.RowIndex].Maker = GetMaker();
+                CarReports[dgvCarReports.CurrentCell.RowIndex].CarName = cbCarName.Text;
+                CarReports[dgvCarReports.CurrentCell.RowIndex].Report = tbReport.Text;
+                CarReports[dgvCarReports.CurrentCell.RowIndex].CarImage = pbCarImage.Image;
+                EditFieldReset();
+                dgvCarReports.Refresh();    //一覧更新
+            }
 
         }
 
@@ -172,6 +178,18 @@ namespace CarReportSystem {
 
         private void currentTime_Tick(object sender, EventArgs e) {
             tsCurrentTimeText.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:ss");
+        }
+
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            mode++;
+            if (mode > 4) {
+                mode = 0;
+            }
+
+            //mode = mode < 4 ? ++mode : 0; 別解
+            //mode = &5;
+
+            pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
         }
     }
 }
