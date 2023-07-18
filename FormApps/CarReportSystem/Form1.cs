@@ -45,22 +45,27 @@ namespace CarReportSystem {
 
             CarReports.Add(CarReport);
 
-            if (!cbAuthor.Items.Contains(cbAuthor.Text) && !cbCarName.Items.Contains(cbCarName.Text)) {
+            if (!cbAuthor.Items.Contains(cbAuthor.Text)) {
                 cbAuthor.Items.Add(cbAuthor.Text);
+            }
+            if (!cbCarName.Items.Contains(cbCarName.Text)) {
                 cbCarName.Items.Add(cbCarName.Text);
             }
 
-            FieldReset();
-            dgvCarReports.ClearSelection();
+            EditFieldReset();
         }
 
-        private void FieldReset() {
+        //項目クリア処理
+        private void EditFieldReset() {
             dtpDate.Value = DateTime.Now;
             cbAuthor.Text = null;
             SetSelectedMaker("トヨタ");
             cbCarName.Text = null;
             tbReport.Text = null;
             pbCarImage.Image = null;
+
+            ModifyDeleteEnabled(false);
+            dgvCarReports.ClearSelection(); //選択解除
         }
 
         public CarReport.MakerGroup GetMaker() {
@@ -90,21 +95,17 @@ namespace CarReportSystem {
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
             CarReports.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
-            btDeleteReport.Enabled = false;
-            btModifyReport.Enabled = false;
-            FieldReset();
+            EditFieldReset();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-            btModifyReport.Enabled = false; //マスクする
-            btDeleteReport.Enabled = false;
+            ModifyDeleteEnabled(false);
         }
 
         //レコードの選択時
         private void dgvCarReports_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            btModifyReport.Enabled = true;
-            btDeleteReport.Enabled = true;
+            ModifyDeleteEnabled(true);
             int serectedCurrentRowIndex = dgvCarReports.CurrentCell.RowIndex;
             dtpDate.Value = CarReports[serectedCurrentRowIndex].Date;
             cbAuthor.Text = CarReports[serectedCurrentRowIndex].Author;
@@ -112,6 +113,16 @@ namespace CarReportSystem {
             cbCarName.Text = CarReports[serectedCurrentRowIndex].CarName;
             tbReport.Text = CarReports[serectedCurrentRowIndex].Report;
             pbCarImage.Image = CarReports[serectedCurrentRowIndex].CarImage;
+        }
+
+        private void ModifyDeleteEnabled(bool enabled) {
+            if (enabled) {
+                btModifyReport.Enabled = true;  //修正ボタン有効
+                btDeleteReport.Enabled = true;  //削除ボタン有効
+            } else if (!enabled) {
+                btDeleteReport.Enabled = false; //修正ボタン無効 
+                btModifyReport.Enabled = false; //削除ボタン無効
+            }
         }
 
         //更新ボタンイベントハンドラ
@@ -123,6 +134,7 @@ namespace CarReportSystem {
             CarReports[serectedCurrentRowIndex].CarName = cbCarName.Text;
             CarReports[serectedCurrentRowIndex].Report = tbReport.Text;
             CarReports[serectedCurrentRowIndex].CarImage = pbCarImage.Image;
+            EditFieldReset();
             dgvCarReports.Refresh();    //一覧更新
 
         }

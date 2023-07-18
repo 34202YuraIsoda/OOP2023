@@ -72,9 +72,11 @@ namespace CarReportSystem {
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tbVersion);
             this.Controls.Add(this.btOK);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "バージョン情報";
             this.ResumeLayout(false);
             this.PerformLayout();

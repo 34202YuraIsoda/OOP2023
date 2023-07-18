@@ -391,31 +391,31 @@ namespace CarReportSystem {
             // 
             this.開くOToolStripMenuItem.Name = "開くOToolStripMenuItem";
             this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.開くOToolStripMenuItem.Text = "開く(&O)...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
             // 
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
             this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存SToolStripMenuItem.Text = "保存(&S)...";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
             // 
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
@@ -430,7 +430,7 @@ namespace CarReportSystem {
             // 色設定ToolStripMenuItem
             // 
             this.色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.色設定ToolStripMenuItem.Text = "色設定...";
             this.色設定ToolStripMenuItem.Click += new System.EventHandler(this.色設定ToolStripMenuItem_Click);
             // 
@@ -445,7 +445,7 @@ namespace CarReportSystem {
             // バージョン情報ToolStripMenuItem
             // 
             this.バージョン情報ToolStripMenuItem.Name = "バージョン情報ToolStripMenuItem";
-            this.バージョン情報ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.バージョン情報ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.バージョン情報ToolStripMenuItem.Text = "バージョン情報";
             this.バージョン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョン情報ToolStripMenuItem_Click);
             // 
@@ -468,6 +468,10 @@ namespace CarReportSystem {
             this.tsInfoText.Name = "tsInfoText";
             this.tsInfoText.Size = new System.Drawing.Size(118, 17);
             this.tsInfoText.Text = "toolStripStatusLabel1";
+            // 
+            // cdColor
+            // 
+            this.cdColor.Color = System.Drawing.Color.PaleTurquoise;
             // 
             // Form1
             // 
@@ -496,8 +500,10 @@ namespace CarReportSystem {
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "カーレポート管理システム";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbMaker.ResumeLayout(false);
