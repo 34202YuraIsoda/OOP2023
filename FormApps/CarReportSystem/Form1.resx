@@ -117,16 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>125, 17</value>
-  </metadata>
-  <metadata name="ofdImageFileOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>240, 17</value>
-  </metadata>
-  <metadata name="statusDisp.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuItems.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="cdColor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>392, 17</value>
+  <metadata name="ofdImageFileOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>237, 17</value>
   </metadata>
+  <metadata name="statusDisp.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>129, 17</value>
+  </metadata>
+  <metadata name="cdColor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>389, 17</value>
+  </metadata>
+  <metadata name="currentTime.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>483, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAB3rU//ZKFM/0+HQP9KiEL/U45G/0iGPP9FgD3/Y3Sp/3l+wP9VcX7/PH4S/0yGMv90nIv/QHUk/0h7
+        Iv9ge1X/a6JP/1eUQf9akkr/TIhD/zp8N/9rjYn/gY+2/1BpkP9ab6T/VmyR/0ZvXv9adYX/RXRD/1SA
+        Rv+EiYj/eIBz/2+Qcf9NeFH/Nmcx/1mGYP9Aa1L/PliD/73E4/97lqL/aoWb/8fJ5//Rzvb/WXGU/0pt
+        Xv+MiKX/aoVg/0CGGf9yjnP/hnqY/2Zqef9VbX3/cn+s/299r/8lSHL/s7nY/y1VVv81Vof/Hjdl/1dk
+        iv+CfJ3/O1s7/zNtEv9AdBj/UYU8/2Z7dP9tcIH/eHKU/21sqf/Dwuj/2Nzs/7q/4v9UZK//t7/h/6+1
+        3v9eYo3/EjMc/yZHMf9JVVb/aGh0/2Z0av9UZm7/OEpX/zVHTf9NV4X/WV2i/4CHyP8/UqT/OUyY/2Rt
+        qv9dZ6H/OExw/3Nwif+QgqH/i4aT/2x1cv9hY1f/Z2Jo/3dqgv9zbIr/T1p8/zlObP83R3z/O1B2/z5Q
+        bf8oPGD/Jz9e/2x9lf9qaIP/S1tX/z1fOP8jUCP/XXRg/1liXf9RUWX/S0Zt/01Lcf9NWH3/XmmG/11r
+        g/9xd47/X2uC/2t4j/9UYXb/Wl9z/2Njev9wcIT/dXaJ/46Pj/+Ngn//jn6D/454h/+RgZL/dXuP/1pd
+        f/9kboX/UmOA/15kdv+NlbL/gI21/1hkev9LYF//SG1M/0dvS/96k2n/V4w4/2GON/9OcTj/RVlQ/3mH
+        n/+mscj/YmWD/zJEYP9IWHH/nLuo/6u3pP+Dgon/dn2R/z5pXP9hj2//fIx1/1iNL/9fnjj/WH9x/3l7
+        l/+Hk4j/kLRt/5Cblf+FgKH/kqOk/5bDaf9qmlD/Kltj/3yazv+Hn6P/dpGG/2+CYP9klTX/XqM6/4qv
+        sf9qiL//JWNR/0aNNv+NuWn/kKiH/5ezb/9/q4T/QoWr/3eY2P+rv8j/bo5u/3ejfP92iGL/XpUz/1ak
+        Mf9+tmf/m7HM/2uf3v9Jp8X/n86c/4nJQf+LxkX/j8GF/3StoP+fxp3/l8eM/3esiv9rs1v/e5d3/2ih
+        RP91s0L/cK02/4WyT/+kxZb/h7mA/5TGVf+RzUT/ks1G/5LPQ/90ujH/Xqwo/3K/Tv9/yWD/YLY1/5bA
+        ev+cxGv/n8FY/5e/VP+Mu0X/o8VO/6TLSv+Yx0T/mM1I/5LPRf95xzv/Yrgw/2y4N/+SzE7/d749/16z
+        Mf+sz2f/r8xn/7DMY/+mxln/pMhb/6rNXv+t0Fn/nMdL/5fPSP+Eyz7/csI2/2i+NP90wjr/sd9o/5PQ
+        U/9ftjD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

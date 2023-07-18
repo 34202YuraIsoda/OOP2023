@@ -24,6 +24,8 @@ namespace CarReportSystem {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -65,7 +67,9 @@ namespace CarReportSystem {
             this.ofdImageFileOpen = new System.Windows.Forms.OpenFileDialog();
             this.statusDisp = new System.Windows.Forms.StatusStrip();
             this.tsInfoText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsCurrentTimeText = new System.Windows.Forms.ToolStripStatusLabel();
             this.cdColor = new System.Windows.Forms.ColorDialog();
+            this.currentTime = new System.Windows.Forms.Timer(this.components);
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -363,14 +367,14 @@ namespace CarReportSystem {
             this.btDeleteReport.UseVisualStyleBackColor = false;
             this.btDeleteReport.Click += new System.EventHandler(this.btDeleteReport_Click);
             // 
-            // menuStrip1
+            // menuItems
             // 
             this.menuItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ファイルFToolStripMenuItem,
             this.編集HToolStripMenuItem,
             this.ヘルプHToolStripMenuItem});
             this.menuItems.Location = new System.Drawing.Point(0, 0);
-            this.menuItems.Name = "menuStrip1";
+            this.menuItems.Name = "menuItems";
             this.menuItems.Size = new System.Drawing.Size(664, 24);
             this.menuItems.TabIndex = 11;
             this.menuItems.Text = "ファイル";
@@ -456,7 +460,8 @@ namespace CarReportSystem {
             // statusDisp
             // 
             this.statusDisp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsInfoText});
+            this.tsInfoText,
+            this.tsCurrentTimeText});
             this.statusDisp.Location = new System.Drawing.Point(0, 539);
             this.statusDisp.Name = "statusDisp";
             this.statusDisp.Size = new System.Drawing.Size(664, 22);
@@ -469,9 +474,20 @@ namespace CarReportSystem {
             this.tsInfoText.Size = new System.Drawing.Size(118, 17);
             this.tsInfoText.Text = "toolStripStatusLabel1";
             // 
+            // tsCurrentTimeText
+            // 
+            this.tsCurrentTimeText.Name = "tsCurrentTimeText";
+            this.tsCurrentTimeText.Size = new System.Drawing.Size(118, 17);
+            this.tsCurrentTimeText.Text = "toolStripStatusLabel1";
+            // 
             // cdColor
             // 
             this.cdColor.Color = System.Drawing.Color.PaleTurquoise;
+            // 
+            // currentTime
+            // 
+            this.currentTime.Interval = 500;
+            this.currentTime.Tick += new System.EventHandler(this.currentTime_Tick);
             // 
             // Form1
             // 
@@ -501,6 +517,7 @@ namespace CarReportSystem {
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuItems);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuItems;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -563,6 +580,8 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem バージョン情報ToolStripMenuItem;
         private System.Windows.Forms.ColorDialog cdColor;
+        private System.Windows.Forms.ToolStripStatusLabel tsCurrentTimeText;
+        private System.Windows.Forms.Timer currentTime;
     }
 }
 

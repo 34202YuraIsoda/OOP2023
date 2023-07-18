@@ -45,14 +45,24 @@ namespace CarReportSystem {
 
             CarReports.Add(CarReport);
 
-            if (!cbAuthor.Items.Contains(cbAuthor.Text)) {
-                cbAuthor.Items.Add(cbAuthor.Text);
-            }
-            if (!cbCarName.Items.Contains(cbCarName.Text)) {
-                cbCarName.Items.Add(cbCarName.Text);
-            }
+            SetCbAuthor(cbAuthor.Text);
+            SetCbCarName(cbCarName.Text);
 
             EditFieldReset();
+        }
+
+        //記録者コンボボックスの履歴登録処理
+        private void SetCbAuthor(string author) {
+            if (!cbAuthor.Items.Contains(author)) {
+                cbAuthor.Items.Add(author);
+            }
+        }
+
+        //車名コンボボックスの履歴登録処理
+        private void SetCbCarName(string carName) {
+            if (!cbCarName.Items.Contains(carName)) {
+                cbCarName.Items.Add(carName);
+            }
         }
 
         //項目クリア処理
@@ -99,7 +109,9 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            currentTime.Start();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            StatusLabelDisp();
             ModifyDeleteEnabled(false);
         }
 
@@ -155,6 +167,10 @@ namespace CarReportSystem {
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             cdColor.ShowDialog();
             BackColor = cdColor.Color;
+        }
+
+        private void currentTime_Tick(object sender, EventArgs e) {
+            tsCurrentTimeText.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:ss");
         }
     }
 }
