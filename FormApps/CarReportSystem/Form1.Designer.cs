@@ -477,8 +477,10 @@ namespace CarReportSystem {
             // tsCurrentTimeText
             // 
             this.tsCurrentTimeText.Name = "tsCurrentTimeText";
-            this.tsCurrentTimeText.Size = new System.Drawing.Size(118, 17);
+            this.tsCurrentTimeText.Size = new System.Drawing.Size(500, 17);
+            this.tsCurrentTimeText.Spring = true;
             this.tsCurrentTimeText.Text = "toolStripStatusLabel1";
+            this.tsCurrentTimeText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cdColor
             // 

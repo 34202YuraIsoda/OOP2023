@@ -1,6 +1,6 @@
 ﻿
 namespace CarReportSystem {
-    partial class Form2 {
+    partial class VersionForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

@@ -160,13 +160,14 @@ namespace CarReportSystem {
         }
 
         private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
-            var vf = new Form2();
+            var vf = new VersionForm();
             vf.ShowDialog();    //モーダルダイヤログとして表示
         }
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            cdColor.ShowDialog();
-            BackColor = cdColor.Color;
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColor.Color;
+            }
         }
 
         private void currentTime_Tick(object sender, EventArgs e) {

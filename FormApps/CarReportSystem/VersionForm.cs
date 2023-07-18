@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarReportSystem {
-    public partial class Form2 : Form {
-        public Form2() {
+    public partial class VersionForm : Form {
+        public VersionForm() {
             InitializeComponent();
         }
 
