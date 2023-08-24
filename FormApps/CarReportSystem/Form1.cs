@@ -124,6 +124,8 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             StatusLabelDisp();
             ModifyDeleteEnabled(false);
+
+            //設定ファイルを逆シリアル化して背景を設定
             if (settings.MainFormColor != 0) {
                 using (var reder = XmlReader.Create("settings.xml")) {
                     var serializer = new XmlSerializer(typeof(Settings));
@@ -203,7 +205,7 @@ namespace CarReportSystem {
 
         //現在時刻を表示する
         private void currentTime_Tick(object sender, EventArgs e) {
-            tsCurrentTimeText.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:ss");
+            tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:ss");
         }
 
         //画像の大きさを変える
