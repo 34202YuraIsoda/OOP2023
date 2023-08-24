@@ -198,7 +198,6 @@ namespace CarReportSystem {
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
-                settings.MainFormColor = cdColor.Color.ToArgb();
             }
         }
 
@@ -224,6 +223,7 @@ namespace CarReportSystem {
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            settings.MainFormColor = BackColor.ToArgb();
             //設定ファイルのシリアル化
             using (var writer = XmlWriter.Create("settings.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
