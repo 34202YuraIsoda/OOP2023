@@ -205,7 +205,7 @@ namespace CarReportSystem {
 
         //現在時刻を表示する
         private void currentTime_Tick(object sender, EventArgs e) {
-            tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:ss");
+            tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:mm:ss");
         }
 
         //画像の大きさを変える
@@ -230,6 +230,18 @@ namespace CarReportSystem {
             using (var writer = XmlWriter.Create("settings.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
+            }
+        }
+
+        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
+
+            }
+        }
+
+        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+
             }
         }
     }
