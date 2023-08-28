@@ -140,7 +140,7 @@ namespace CarReportSystem {
         }
 
         //レコードの選択時
-        private void dgvCarReports_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             ModifyDeleteEnabled(true);
             if (dgvCarReports.CurrentCell != null) {
                 dtpDate.Value = CarReports[dgvCarReports.CurrentCell.RowIndex].Date;
