@@ -260,10 +260,15 @@ namespace CarReportSystem {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
+                        cbAuthor.Items.Clear();
+                        cbCarName.Items.Clear();
+
+                        //EditFieldReset();//入力途中などのデータはすべてクリア(仕様に応じてするかしないか決める)
                         foreach (var carReport in CarReports) {
                             SetCbAuthor(carReport.Author);
                             SetCbCarName(carReport.CarName);
                         }
+                        dgvCarReports.Columns[5].Visible = false;
                     }
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
