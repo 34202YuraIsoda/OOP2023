@@ -125,13 +125,15 @@ namespace CarReportSystem {
             StatusLabelDisp();
             ModifyDeleteEnabled(false);
 
-            //設定ファイルを逆シリアル化して背景を設定
-            if (settings.MainFormColor != 0) {
+            try {
+                //設定ファイルを逆シリアル化して背景を設定
                 using (var reder = XmlReader.Create("settings.xml")) {
                     var serializer = new XmlSerializer(typeof(Settings));
                     var settings = serializer.Deserialize(reder) as Settings;
                     BackColor = Color.FromArgb(settings.MainFormColor);
                 }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -234,13 +236,13 @@ namespace CarReportSystem {
         }
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
+            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
 
             }
         }
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
 
             }
         }
