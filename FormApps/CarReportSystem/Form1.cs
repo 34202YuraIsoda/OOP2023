@@ -127,6 +127,9 @@ namespace CarReportSystem {
             StatusLabelDisp();
             ModifyDeleteEnabled(false);
 
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.MistyRose;
+
             try {
                 //設定ファイルを逆シリアル化して背景を設定
                 using (var reder = XmlReader.Create("settings.xml")) {
@@ -228,6 +231,7 @@ namespace CarReportSystem {
             pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
         }
 
+        //システム終了時（後）
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             settings.MainFormColor = BackColor.ToArgb();
             //設定ファイルのシリアル化
@@ -237,6 +241,7 @@ namespace CarReportSystem {
             }
         }
 
+        //ファイルの保存
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
                 try {
@@ -251,6 +256,7 @@ namespace CarReportSystem {
             }
         }
 
+        //ファイルを開く
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
                 try {
@@ -262,6 +268,7 @@ namespace CarReportSystem {
                         dgvCarReports.DataSource = CarReports;
                         cbAuthor.Items.Clear();
                         cbCarName.Items.Clear();
+                        EditFieldReset();
 
                         //EditFieldReset();//入力途中などのデータはすべてクリア(仕様に応じてするかしないか決める)
                         foreach (var carReport in CarReports) {
