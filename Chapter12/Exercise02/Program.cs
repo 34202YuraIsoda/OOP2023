@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Exercise02 {
     class Program {
@@ -11,20 +13,26 @@ namespace Exercise02 {
             var novelist = Exercise2_1("sample.xml");
             Exercise2_2(novelist, "novelist.json");
 
-            //// これは確認のためのコード 12.2.1
-            //Console.WriteLine("{0} {1}", novelist.Name, novelist.Birth);
-            //foreach (var title in novelist.Masterpieces) {
-            //    Console.WriteLine(title);
-            //}
-            //Console.WriteLine();
+            // これは確認のためのコード 12.2.1
+            Console.WriteLine("{0} {1}", novelist.Name, novelist.Birth);
+            foreach (var title in novelist.Masterpieces) {
+                Console.WriteLine(title);
+            }
+            Console.WriteLine();
 
-            //// これは確認のためのコード 12.2.2
-            //Console.WriteLine(File.ReadAllText("novelist.json"));
-            //Console.WriteLine();
+            // これは確認のためのコード 12.2.2
+            Console.WriteLine(File.ReadAllText("novelist.json"));
+            Console.WriteLine();
         }
 
         private static object Exercise2_1(string v) {
+            using(var reader = XmlReader.Create(v)) {
+                var serializer = new XmlSerializer(typeof(Object));
+                var serializer = serializer.Deserialize(reader) as Object;
+                foreach (var novel in novels.Novels) {
 
+                }
+            }
 
         }
 
