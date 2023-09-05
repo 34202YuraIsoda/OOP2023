@@ -19,7 +19,7 @@ namespace CarReportSystem {
         int mode = 0;
 
         //設定情報保存用オブジェクト
-        Settings settings = new Settings();
+        Settings settings = Settings.GetInstance();
 
         public Form1() {
             InitializeComponent();
