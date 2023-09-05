@@ -291,10 +291,11 @@ namespace CarReportSystem {
 
         }
 
-        //接続イベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
         }
+
+        //接続イベントハンドラ
     }
 }
