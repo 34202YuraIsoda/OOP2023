@@ -14,11 +14,11 @@ namespace Exercise02 {
             Exercise2_2(novelist, "novelist.json");
 
             // これは確認のためのコード 12.2.1
-            Console.WriteLine("{0} {1}", novelist.Name, novelist.Birth);
-            foreach (var title in novelist.Masterpieces) {
-                Console.WriteLine(title);
-            }
-            Console.WriteLine();
+            //Console.WriteLine("{0} {1}", novelist.Name, novelist.Birth);
+            //foreach (var title in novelist.Masterpieces) {
+            //    Console.WriteLine(title);
+            //}
+            //Console.WriteLine();
 
             // これは確認のためのコード 12.2.2
             Console.WriteLine(File.ReadAllText("novelist.json"));
@@ -26,14 +26,11 @@ namespace Exercise02 {
         }
 
         private static object Exercise2_1(string v) {
-            using(var reader = XmlReader.Create(v)) {
-                var serializer = new XmlSerializer(typeof(Object));
-                var serializer = serializer.Deserialize(reader) as Object;
-                foreach (var novel in novels.Novels) {
-
-                }
+            using (var reader = XmlReader.Create(v)) {
+                var serializer = new XmlSerializer(typeof(Novelist));
+                var novelist = serializer.Deserialize(reader) as Novelist;
+                return novelist;
             }
-
         }
 
         private static void Exercise2_2(object novelist, string v) {
