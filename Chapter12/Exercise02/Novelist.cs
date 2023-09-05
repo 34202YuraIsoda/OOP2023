@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Exercise02 {
+    [XmlRoot(ElementName = "novelist")]
     public class Novelist {
+        [XmlElement(ElementName = "name")]
         public string Name { get; set; }
+        [XmlElement(ElementName = "birth")]
         public DateTime Birth { get; set; }
+        [XmlElement(ElementName = "masterpieces")]
         public string[] Masterpieces { get; set; }
     }
 }
