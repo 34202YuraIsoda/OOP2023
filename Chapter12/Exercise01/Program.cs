@@ -91,18 +91,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(string v) {
-            var employees = new Employee[]{
-                new Employee {
+            var employees = new Employee2[]{
+                new Employee2 {
                     Id = 1,
                     Name = "a",
                     HireDate = DateTime.Parse("2000/01/01"),
                 },
-                new Employee {
+                new Employee2 {
                     Id = 2,
                     Name = "b",
                     HireDate = DateTime.Parse("2020/12/31"),
                 },
-                new Employee {
+                new Employee2 {
                     Id = 3,
                     Name = "c",
                     HireDate = DateTime.Parse("2023/11/01"),
@@ -115,5 +115,17 @@ namespace Exercise01 {
             }
 
         }
+
+        [DataContract(Name = "employee")]
+        public class Employee2 {
+            public int Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "hiredate")]
+            public DateTime HireDate { get; set; }
+        }
+
     }
 }
