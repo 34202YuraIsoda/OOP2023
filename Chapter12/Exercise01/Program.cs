@@ -35,9 +35,17 @@ namespace Exercise01 {
                 HireDate = DateTime.Parse("2000/01/01"),
             };
 
+            //シリアル化
             using (var writer = XmlWriter.Create(v)) {
                 var serializer = new XmlSerializer(employee.GetType());
                 serializer.Serialize(writer, employee);
+            }
+
+            //逆シリアル化
+            using(var reader = XmlReader.Create(v)) {
+                var serializer = new XmlSerializer(typeof(Employee));
+                var employeeRead = serializer.Deserialize(reader) as Employee;
+                Console.WriteLine(employeeRead);
             }
         }
 
