@@ -12,7 +12,8 @@ namespace Exercise02 {
         public string Name { get; set; }
         [XmlElement(ElementName = "birth")]
         public DateTime Birth { get; set; }
-        [XmlElement(ElementName = "masterpieces")]
+        [XmlArray("masterpieces")]
+        [XmlArrayItem("title",typeof(string))]
         public string[] Masterpieces { get; set; }
     }
 }
