@@ -42,16 +42,27 @@ namespace CarReportSystem {
                 return;
             }
 
-            var CarReport = new CarReport {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = GetMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image
-            };
+            DataRow newRow = infosys202322DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = GetMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
 
-            CarReports.Add(CarReport);
+            infosys202322DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202322DataSet.CarReportTable);
+
+            //var CarReport = new CarReport {
+            //    Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    Maker = GetMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image
+            //};
+
+            //CarReports.Add(CarReport);
 
             SetCbAuthor(cbAuthor.Text);
             SetCbCarName(cbCarName.Text);
@@ -116,14 +127,18 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+            carReportTableTableAdapter.Update(infosys202322DataSet.CarReportTable);
+
             CarReports.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
             EditFieldReset();
+
         }
 
         //Form1を実行時の処理
         private void Form1_Load(object sender, EventArgs e) {
             currentTime.Start();
-            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             StatusLabelDisp();
             ModifyDeleteEnabled(false);
 
@@ -146,12 +161,21 @@ namespace CarReportSystem {
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             ModifyDeleteEnabled(true);
             if (dgvCarReports.CurrentCell != null) {
-                dtpDate.Value = CarReports[dgvCarReports.CurrentCell.RowIndex].Date;
-                cbAuthor.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].Author;
-                SetSelectedMaker(CarReports[dgvCarReports.CurrentCell.RowIndex].Maker.ToString());
-                cbCarName.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].CarName;
-                tbReport.Text = CarReports[dgvCarReports.CurrentCell.RowIndex].Report;
-                pbCarImage.Image = CarReports[dgvCarReports.CurrentCell.RowIndex].CarImage;
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[2].Value.ToString();
+                SetSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
+
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                                    ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
+
+                //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
+                //    pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                //} else {
+                //    pbCarImage.Image = null;
+                //}
+
             } else if (dgvCarReports.CurrentCell == null) {
                 EditFieldReset();
             }
@@ -172,18 +196,22 @@ namespace CarReportSystem {
             }
         }
 
-        //更新ボタンイベントハンドラ
+        //修正ボタンイベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReports.CurrentCell != null) {
-                CarReports[dgvCarReports.CurrentCell.RowIndex].Date = dtpDate.Value;
-                CarReports[dgvCarReports.CurrentCell.RowIndex].Author = cbAuthor.Text;
-                CarReports[dgvCarReports.CurrentCell.RowIndex].Maker = GetMaker();
-                CarReports[dgvCarReports.CurrentCell.RowIndex].CarName = cbCarName.Text;
-                CarReports[dgvCarReports.CurrentCell.RowIndex].Report = tbReport.Text;
-                CarReports[dgvCarReports.CurrentCell.RowIndex].CarImage = pbCarImage.Image;
+                dgvCarReports.CurrentRow.Cells[1].Value = dtpDate.Value;
+                dgvCarReports.CurrentRow.Cells[2].Value = cbAuthor.Text;
+                dgvCarReports.CurrentRow.Cells[3].Value = GetMaker();
+                dgvCarReports.CurrentRow.Cells[4].Value = cbCarName.Text;
+                dgvCarReports.CurrentRow.Cells[5].Value = tbReport.Text;
+                dgvCarReports.CurrentRow.Cells[6].Value = pbCarImage.Image;
                 EditFieldReset();
                 dgvCarReports.Refresh();    //一覧更新
             }
+
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202322DataSet);
 
         }
 
@@ -291,11 +319,41 @@ namespace CarReportSystem {
 
         }
 
+        //接続イベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
+            foreach (var dscr in infosys202322DataSet.CarReportTable) {
+                SetSelectedMaker(dscr.Maker);
+                var CarReport = new CarReport {
+                    Date = dscr.Date,
+                    Author = dscr.Author,
+                    Maker = GetMaker(),
+                    CarName = dscr.CarName,
+                    Report = dscr.Report,
+                    CarImage = !dscr.ItemArray[6].Equals(DBNull.Value) ?
+                                ByteArrayToImage(dscr.Image) : null
+                };
+                CarReports.Add(CarReport);
+                SetCbAuthor(dscr.Author);
+                SetCbCarName(dscr.CarName);
+
+            }
+            EditFieldReset();
         }
 
-        //接続イベントハンドラ
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
     }
 }
