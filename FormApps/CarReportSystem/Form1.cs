@@ -53,17 +53,6 @@ namespace CarReportSystem {
             infosys202322DataSet.CarReportTable.Rows.Add(newRow);
             this.carReportTableTableAdapter.Update(infosys202322DataSet.CarReportTable);
 
-            //var CarReport = new CarReport {
-            //    Date = dtpDate.Value,
-            //    Author = cbAuthor.Text,
-            //    Maker = GetMaker(),
-            //    CarName = cbCarName.Text,
-            //    Report = tbReport.Text,
-            //    CarImage = pbCarImage.Image
-            //};
-
-            //CarReports.Add(CarReport);
-
             SetCbAuthor(cbAuthor.Text);
             SetCbCarName(cbCarName.Text);
 
@@ -138,6 +127,7 @@ namespace CarReportSystem {
         //Form1を実行時の処理
         private void Form1_Load(object sender, EventArgs e) {
             currentTime.Start();
+            dgvCarReports.Columns[0].Visible = false;   //ID項目非表示
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             StatusLabelDisp();
             ModifyDeleteEnabled(false);
@@ -167,7 +157,8 @@ namespace CarReportSystem {
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
 
-                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                                        && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
                                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
 
                 //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
@@ -323,22 +314,12 @@ namespace CarReportSystem {
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
+
             foreach (var dscr in infosys202322DataSet.CarReportTable) {
-                SetSelectedMaker(dscr.Maker);
-                var CarReport = new CarReport {
-                    Date = dscr.Date,
-                    Author = dscr.Author,
-                    Maker = GetMaker(),
-                    CarName = dscr.CarName,
-                    Report = dscr.Report,
-                    CarImage = !dscr.ItemArray[6].Equals(DBNull.Value) ?
-                                ByteArrayToImage(dscr.Image) : null
-                };
-                CarReports.Add(CarReport);
                 SetCbAuthor(dscr.Author);
                 SetCbCarName(dscr.CarName);
-
             }
+
             EditFieldReset();
         }
 
