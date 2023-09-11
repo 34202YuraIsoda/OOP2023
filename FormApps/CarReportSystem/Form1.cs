@@ -15,7 +15,6 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
-        BindingList<CarReport> CarReports = new BindingList<CarReport>();
         int mode = 0;
 
         //設定情報保存用オブジェクト
@@ -23,7 +22,6 @@ namespace CarReportSystem {
 
         public Form1() {
             InitializeComponent();
-            //dgvCarReports.DataSource = CarReports;
         }
 
         //ステータスラベルのテキスト表示・非表示（引数なしはメッセージ非表示）
@@ -119,7 +117,6 @@ namespace CarReportSystem {
             dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
             carReportTableTableAdapter.Update(infosys202322DataSet.CarReportTable);
 
-            CarReports.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
             EditFieldReset();
 
         }
@@ -260,67 +257,11 @@ namespace CarReportSystem {
             }
         }
 
-        //ファイルの保存
-        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, CarReports);
-                    }
-                } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        //ファイルを開く
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    //逆シリアル化でバイナリ形式を取り込む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        cbAuthor.Items.Clear();
-                        cbCarName.Items.Clear();
-                        EditFieldReset();
-
-                        //EditFieldReset();//入力途中などのデータはすべてクリア(仕様に応じてするかしないか決める)
-                        foreach (var carReport in CarReports) {
-                            SetCbAuthor(carReport.Author);
-                            SetCbCarName(carReport.CarName);
-                        }
-                        dgvCarReports.Columns[5].Visible = false;
-                    }
-                } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
             this.Validate();
             this.carReportTableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202322DataSet);
 
-        }
-
-        //接続イベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
-
-            foreach (var dscr in infosys202322DataSet.CarReportTable) {
-                SetCbAuthor(dscr.Author);
-                SetCbCarName(dscr.CarName);
-            }
-
-            EditFieldReset();
         }
 
         // バイト配列をImageオブジェクトに変換
@@ -335,6 +276,18 @@ namespace CarReportSystem {
             ImageConverter imgconv = new ImageConverter();
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
+        }
+
+        private void 接続CToolStripMenuItem_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
+
+            foreach (var dscr in infosys202322DataSet.CarReportTable) {
+                SetCbAuthor(dscr.Author);
+                SetCbCarName(dscr.CarName);
+            }
+
+            EditFieldReset();
         }
     }
 }
