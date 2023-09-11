@@ -81,6 +81,7 @@ namespace CarReportSystem {
             this.sfdCarRepoSave = new System.Windows.Forms.SaveFileDialog();
             this.carReportTableTableAdapter = new CarReportSystem.infosys202322DataSetTableAdapters.CarReportTableTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202322DataSetTableAdapters.TableAdapterManager();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportTableBindingSource)).BeginInit();
@@ -467,6 +468,7 @@ namespace CarReportSystem {
             // 
             this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.接続CToolStripMenuItem,
+            this.toolStripSeparator1,
             this.終了XToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
             this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
@@ -475,7 +477,8 @@ namespace CarReportSystem {
             // 接続CToolStripMenuItem
             // 
             this.接続CToolStripMenuItem.Name = "接続CToolStripMenuItem";
-            this.接続CToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.接続CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.接続CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.接続CToolStripMenuItem.Text = "接続(&C)";
             this.接続CToolStripMenuItem.Click += new System.EventHandler(this.接続CToolStripMenuItem_Click);
             // 
@@ -483,7 +486,7 @@ namespace CarReportSystem {
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
@@ -578,6 +581,11 @@ namespace CarReportSystem {
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CarReportTableTableAdapter = this.carReportTableTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202322DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // Form1
             // 
@@ -687,6 +695,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.DataGridViewTextBoxColumn reportDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
         private System.Windows.Forms.ToolStripMenuItem 接続CToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

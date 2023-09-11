@@ -261,7 +261,6 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportTableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202322DataSet);
-
         }
 
         // バイト配列をImageオブジェクトに変換
@@ -279,14 +278,16 @@ namespace CarReportSystem {
         }
 
         private void 接続CToolStripMenuItem_Click(object sender, EventArgs e) {
+            dbConnection();
+        }
+
+        private void dbConnection() {
             // TODO: このコード行はデータを 'infosys202322DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
-
             foreach (var dscr in infosys202322DataSet.CarReportTable) {
                 SetCbAuthor(dscr.Author);
                 SetCbCarName(dscr.CarName);
             }
-
             EditFieldReset();
         }
     }
