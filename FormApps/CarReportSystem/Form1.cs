@@ -290,5 +290,24 @@ namespace CarReportSystem {
             }
             EditFieldReset();
         }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202322DataSet.CarReportTable,tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByMaker(this.infosys202322DataSet.CarReportTable,tbCarNameSearch.Text);
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202322DataSet.CarReportTable,dtpDateSearch.Value.ToString());
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            tbAuthorSearch.Text = "";
+            tbCarNameSearch.Text = "";
+            dtpDateSearch.Value = DateTime.Now;
+            dbConnection();
+        }
     }
 }
