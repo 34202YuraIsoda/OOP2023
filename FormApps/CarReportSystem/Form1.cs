@@ -300,14 +300,15 @@ namespace CarReportSystem {
         }
 
         private void btDateSearch_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202322DataSet.CarReportTable,dtpDateSearch.Value.ToString());
+            carReportTableTableAdapter.FillByDate(this.infosys202322DataSet.CarReportTable,dtpStartDateSearch.Text,dtpEndDateSearch.Text);
         }
 
         private void btReset_Click(object sender, EventArgs e) {
             tbAuthorSearch.Text = "";
             tbCarNameSearch.Text = "";
-            dtpDateSearch.Value = DateTime.Now;
-            dbConnection();
+            dtpStartDateSearch.Value = DateTime.Now;
+            dtpEndDateSearch.Value = DateTime.Now;
+            carReportTableTableAdapter.Fill(this.infosys202322DataSet.CarReportTable);
         }
     }
 }
