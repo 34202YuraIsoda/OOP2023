@@ -290,7 +290,7 @@ namespace CarReportSystem {
             this.tbReport.Location = new System.Drawing.Point(85, 294);
             this.tbReport.Multiline = true;
             this.tbReport.Name = "tbReport";
-            this.tbReport.Size = new System.Drawing.Size(329, 62);
+            this.tbReport.Size = new System.Drawing.Size(287, 62);
             this.tbReport.TabIndex = 4;
             // 
             // dgvCarReports
@@ -308,14 +308,14 @@ namespace CarReportSystem {
             this.reportDataGridViewTextBoxColumn,
             this.imageDataGridViewImageColumn});
             this.dgvCarReports.DataSource = this.carReportTableBindingSource;
-            this.dgvCarReports.Location = new System.Drawing.Point(436, 215);
+            this.dgvCarReports.Location = new System.Drawing.Point(378, 215);
             this.dgvCarReports.MultiSelect = false;
             this.dgvCarReports.Name = "dgvCarReports";
             this.dgvCarReports.ReadOnly = true;
             this.dgvCarReports.RowHeadersVisible = false;
             this.dgvCarReports.RowTemplate.Height = 21;
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarReports.Size = new System.Drawing.Size(600, 404);
+            this.dgvCarReports.Size = new System.Drawing.Size(658, 404);
             this.dgvCarReports.TabIndex = 12;
             this.dgvCarReports.TabStop = false;
             this.dgvCarReports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarReports_CellClick);
@@ -323,7 +323,7 @@ namespace CarReportSystem {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(434, 200);
+            this.label6.Location = new System.Drawing.Point(378, 202);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 12);
             this.label6.TabIndex = 1;
@@ -332,7 +332,7 @@ namespace CarReportSystem {
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(44, 396);
+            this.label7.Location = new System.Drawing.Point(44, 406);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 12);
             this.label7.TabIndex = 0;
@@ -373,7 +373,7 @@ namespace CarReportSystem {
             this.btAddReport.BackColor = System.Drawing.Color.Pink;
             this.btAddReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAddReport.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAddReport.Location = new System.Drawing.Point(436, 83);
+            this.btAddReport.Location = new System.Drawing.Point(380, 83);
             this.btAddReport.Name = "btAddReport";
             this.btAddReport.Size = new System.Drawing.Size(80, 80);
             this.btAddReport.TabIndex = 8;
@@ -399,7 +399,7 @@ namespace CarReportSystem {
             this.btDeleteReport.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btDeleteReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDeleteReport.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 12F);
-            this.btDeleteReport.Location = new System.Drawing.Point(528, 83);
+            this.btDeleteReport.Location = new System.Drawing.Point(500, 83);
             this.btDeleteReport.Name = "btDeleteReport";
             this.btDeleteReport.Size = new System.Drawing.Size(80, 80);
             this.btDeleteReport.TabIndex = 10;
