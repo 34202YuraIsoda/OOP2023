@@ -128,7 +128,14 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_5() {
             using (var db = new BooksDbContext()) {
-                var books = GetBooks().ToDictionary(b => b.Author.Name);
+                var books = GetBooks().OrderBy(b => b.Author.Birthday);
+                foreach (var author in db.Authors.OrderBy(a => a.Birthday)) {
+                    Console.WriteLine("[{0}]({1:yyyy/MM/dd})",author.Name,author.Birthday);
+                    foreach (var book in GetBooks().Where(b => b.Author.Name.Equals(author.Name))) {
+                        Console.WriteLine("タイトル:{0}, 発行年:{1}", book.Title, book.PublishedYear);
+                    }
+                    Console.WriteLine();
+                }
             }
         }
 
