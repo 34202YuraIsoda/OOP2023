@@ -28,8 +28,8 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btRegister = new System.Windows.Forms.Button();
+            this.lbUrlTitle = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -69,33 +69,33 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(871, 464);
             this.wbBrowser.TabIndex = 3;
             // 
-            // button1
+            // btRegister
             // 
-            this.button1.Location = new System.Drawing.Point(792, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 32);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btRegister.Location = new System.Drawing.Point(792, 13);
+            this.btRegister.Name = "btRegister";
+            this.btRegister.Size = new System.Drawing.Size(92, 32);
+            this.btRegister.TabIndex = 4;
+            this.btRegister.Text = "登録";
+            this.btRegister.UseVisualStyleBackColor = true;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
-            // listBox1
+            // lbUrlTitle
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(13, 640);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(871, 40);
-            this.listBox1.TabIndex = 5;
-            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.lbUrlTitle.FormattingEnabled = true;
+            this.lbUrlTitle.ItemHeight = 12;
+            this.lbUrlTitle.Location = new System.Drawing.Point(13, 640);
+            this.lbUrlTitle.Name = "lbUrlTitle";
+            this.lbUrlTitle.Size = new System.Drawing.Size(871, 40);
+            this.lbUrlTitle.TabIndex = 5;
+            this.lbUrlTitle.Click += new System.EventHandler(this.lbUrlTitle_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 690);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbUrlTitle);
+            this.Controls.Add(this.btRegister);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
@@ -114,8 +114,8 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btRegister;
+        private System.Windows.Forms.ListBox lbUrlTitle;
     }
 }
 

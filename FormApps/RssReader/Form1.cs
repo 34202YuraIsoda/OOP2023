@@ -13,6 +13,7 @@ using System.Xml.Linq;
 namespace RssReader {
     public partial class Form1 : Form {
         List<ItemData> itemDatas = new List<ItemData>();
+        List<ItemData> channelDatas = new List<ItemData>();
 
         public Form1() {
             InitializeComponent();
@@ -20,7 +21,10 @@ namespace RssReader {
 
         private void btGet_Click(object sender, EventArgs e) {
             //https://news.yahoo.co.jp/rss/topics/it.xml
-            if (tbUrl.Text.Contains("xml")) {
+            //https://news.yahoo.co.jp/rss/topics/science.xml
+            //https://news.yahoo.co.jp/rss/topics/sports.xml
+            if (tbUrl.Text.Contains("xml")) {// xml形式でなければ無視
+                lbRssTitle.Items.Clear();
                 using (var wc = new WebClient()) {
                     var url = wc.OpenRead(tbUrl.Text);
                     XDocument xdoc = XDocument.Load(url);
@@ -36,32 +40,45 @@ namespace RssReader {
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            if (lbRssTitle.SelectedIndex != -1) {
+            if (lbRssTitle.SelectedIndex != -1) {// リストボックスの空白部分をクリックしたとき無視
                 var d = itemDatas.First(x => x.Title.Equals(lbRssTitle.SelectedItem));
                 wbBrowser.Navigate(d.Link);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            using (var wc = new WebClient()) {
-                var url = wc.OpenRead(tbUrl.Text);
-                XDocument xdoc = XDocument.Load(url);
-                var channelDatas = xdoc.Root.Descendants("channel").Select(x => new ItemData {
-                    Title = (string)x.Element("title"),
-                    Link = (string)x.Element("link")
-                }).ToList();
+        // タイトルをクリック時に上部テキストボックスにURLを挿入
+        private void lbUrlTitle_Click(object sender, EventArgs e) {
+            var n = channelDatas;
+            if (lbUrlTitle.SelectedIndex != -1) {// リストボックスの空白部分をクリックしたとき無視
                 foreach (var node in channelDatas) {
-                    listBox1.Items.Add(node.Title);
+                    if (lbUrlTitle.Items[lbUrlTitle.SelectedIndex].ToString() == node.Title) {
+                        tbUrl.Text = node.Link;
+                    }
                 }
-            }
-            if (!listBox1.Items.Contains(tbUrl.Text) && tbUrl.Text.Trim() != "") {
-                listBox1.Items.Add(tbUrl.Text);
             }
         }
 
-        private void listBox1_Click(object sender, EventArgs e) {
-            if (listBox1.SelectedIndex != -1) {
-                tbUrl.Text = (string)listBox1.Items[listBox1.SelectedIndex];
+        // URLの登録処理
+        private void btRegister_Click(object sender, EventArgs e) {
+            if (tbUrl.Text.Contains("xml")) {// xml形式でなければ無視
+                using (var wc = new WebClient()) {
+                    var url = wc.OpenRead(tbUrl.Text);
+                    XDocument xdoc = XDocument.Load(url);
+                    itemDatas = xdoc.Root.Descendants("channel").Select(x => new ItemData {
+                        Title = (string)x.Element("title"),
+                        Link = tbUrl.Text
+                    }).ToList();
+                    foreach (var node in itemDatas) {
+                        node.Title.Trim();// 空白除去
+                        if (!lbUrlTitle.Items.Contains(node.Title)) {// 既に登録済みのタイトルは無視
+                            channelDatas.Add(new ItemData {
+                                Title = node.Title,
+                                Link = tbUrl.Text
+                            });
+                            lbUrlTitle.Items.Add(node.Title);
+                        }
+                    }
+                }
             }
         }
     }
