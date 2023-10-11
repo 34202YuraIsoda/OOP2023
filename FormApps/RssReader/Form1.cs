@@ -25,9 +25,10 @@ namespace RssReader {
             //https://news.yahoo.co.jp/rss/topics/sports.xml
             using (var wc = new WebClient()) {
                 var uri = new Uri(tbUrl.Text);
-                var n = uri();
+                var result = new Uri(tbUrl.Text);
+                var n = uri.TryCreate(tbUrl.Text,UriKind.Absolute,out result);
                 lbRssTitle.Items.Clear();
-                if (false) {// 正規のurlでなければ無視
+                if (true) {// 正規のurlでなければ無視
                     var url = wc.OpenRead(tbUrl.Text);
                     XDocument xdoc = XDocument.Load(url);
                     itemDatas = xdoc.Root.Descendants("item").Select(x => new ItemData {
