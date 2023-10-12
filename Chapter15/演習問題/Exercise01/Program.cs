@@ -66,11 +66,12 @@ namespace Exercise01 {
 
         private static void Exercise1_6() {
             Console.WriteLine("//Exercise1_6");
-            var categorieGroupBooks = Library.Books.GroupBy(b => b.CategoryId).OrderBy(b => b.Key);
-            foreach (var books in categorieGroupBooks) {
-                Console.WriteLine("#{0}", Library.Categories.Where(c => c.Id == books.Key).First().Name);
-                foreach (var book in books) {
-                    Console.WriteLine(" {0}", book.Title);
+            var categorieGroupBooks = Library.Books.GroupBy(b => b.CategoryId);
+            var categoriesNameOrderby = Library.Categories.OrderBy(c => c.Name);
+            foreach (var categorie in categoriesNameOrderby) {
+                Console.WriteLine("#{0}", categorie.Name);
+                foreach (var books in categorieGroupBooks) {
+
                 }
             }
         }
