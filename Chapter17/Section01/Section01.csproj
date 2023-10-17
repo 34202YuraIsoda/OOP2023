@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Greeting.cs" />
     <Compile Include="GreetingBase.cs" />
+    <Compile Include="IGreeting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
