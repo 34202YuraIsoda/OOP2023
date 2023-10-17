@@ -89,7 +89,10 @@ namespace Exercise01 {
         private static void Exercise1_7() {
             Console.WriteLine("//Exercise1_7");
             var catid = Library.Categories.Single(c => c.Name == "Development").Id;
-            var groups = Library.Books.Where(b => b.CategoryId == catid).GroupBy(b => b.PublishedYear).OrderBy(b => b.Key);
+            var groups = Library.Books
+                                .Where(b => b.CategoryId == catid)
+                                .GroupBy(b => b.PublishedYear)
+                                .OrderBy(b => b.Key);
             foreach (var group in groups) {
                 Console.WriteLine("#{0}年", group.Key);
                 foreach (var item in group) {
@@ -99,7 +102,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_8() {
-
+            var query = Library.Categories
+                                .GroupJoin(
+                                    Library.Books,
+                                    c => c.Id,
+                                    b => b.CategoryId,
+                                    (c, b) => new {
+                                        CategoryName = c.Name,
+                                        Count = b.Count()
+                                    })
+                                .Where(x => x.Count >= 4);
+            foreach (var category in query) {
+                Console.WriteLine(category.CategoryName);
+            }
         }
     }
 }
