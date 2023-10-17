@@ -87,7 +87,15 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-
+            Console.WriteLine("//Exercise1_7");
+            var catid = Library.Categories.Single(c => c.Name == "Development").Id;
+            var groups = Library.Books.Where(b => b.CategoryId == catid).GroupBy(b => b.PublishedYear).OrderBy(b => b.Key);
+            foreach (var group in groups) {
+                Console.WriteLine("#{0}年", group.Key);
+                foreach (var item in group) {
+                    Console.WriteLine("{0}", item.Title);
+                }
+            }
         }
 
         private static void Exercise1_8() {
