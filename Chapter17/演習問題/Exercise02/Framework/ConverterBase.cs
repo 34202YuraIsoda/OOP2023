@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DistanceConverter {
+namespace Exercise02.Framework {
     // List 17-10 / List 17-13 (ConverterBase)
     public abstract class ConverterBase {
 

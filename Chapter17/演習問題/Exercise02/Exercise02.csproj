@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcreteConverter\ConverterFactory.cs" />
+    <Compile Include="ConcreteConverter\FeetConverter.cs" />
+    <Compile Include="ConcreteConverter\InchConverter.cs" />
+    <Compile Include="ConcreteConverter\KilometerConverter.cs" />
+    <Compile Include="ConcreteConverter\MeterConverter.cs" />
+    <Compile Include="ConcreteConverter\MileConverter.cs" />
+    <Compile Include="ConcreteConverter\YardConverter.cs" />
     <Compile Include="Framework\ConverterBase.cs" />
     <Compile Include="Framework\DistanceConverter.cs" />
     <Compile Include="Program.cs" />
@@ -51,8 +58,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ConcreteConverter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
