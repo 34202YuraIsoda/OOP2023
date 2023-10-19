@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise01 {
+namespace Exercise03 {
     class Program {
         static void Main(string[] args) {
-            TextProcessor.Run<ToHankakuProcessor>("Sample.txt");
+            var text = new TextFileProcessor(new ToHankakuProcessor());
+            text.Run("Sample.txt");
         }
     }
 }
