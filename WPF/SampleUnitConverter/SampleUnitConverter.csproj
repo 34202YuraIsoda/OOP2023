@@ -59,7 +59,7 @@
     <Compile Include="DistanceUnit.cs" />
     <Compile Include="ImperialUnit.cs" />
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="MetricUnit.cs" />
+    <Compile Include="GrammeUnit.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -16,7 +16,7 @@
             <TextBox Width="100" Margin="4"
                      Text="{Binding MetricValue,StringFormat={}{0:n3}}"/>
             <ComboBox Width="80" Margin="4"
-                      ItemsSource="{Binding Source={x:Static SampleUnitConverter:MetricUnit.Units}}"
+                      ItemsSource="{Binding Source={x:Static SampleUnitConverter:GrammeUnit.Units}}"
                       SelectedItem="{Binding CurrentMetricUnit}"/>
         </StackPanel>
         

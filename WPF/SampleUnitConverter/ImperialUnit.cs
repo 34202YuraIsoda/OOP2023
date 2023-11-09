@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleUnitConverter {
-    //ヤード単位を表すクラス
+    //ポンド単位を表すクラス
     public class ImperialUnit : DistanceUnit {
         private static List<ImperialUnit> units = new List<ImperialUnit>() {
-            new ImperialUnit{Name = "in",Coefficient = 1,},
-            new ImperialUnit{Name = "ft",Coefficient = 12,},
-            new ImperialUnit{Name = "yd",Coefficient = 10 * 3,},
-            new ImperialUnit{Name = "ml",Coefficient = 10 * 3 * 1760,},
+            new ImperialUnit{Name = "oz",Coefficient = 1,},
+            new ImperialUnit{Name = "lb",Coefficient = 16,},
+            new ImperialUnit{Name = "stone",Coefficient = 16 * 14,},
         };
         public static ICollection<ImperialUnit> Units { get { return units; } }
 
@@ -22,8 +21,8 @@ namespace SampleUnitConverter {
         /// <param name="value">値</param>
         /// <returns>変換値</returns>
 
-        public double FromMetricUnit(MetricUnit unit, double value) {
-            return (value * unit.Coefficient) / 25.4 / this.Coefficient;
+        public double FromMetricUnit(GrammeUnit unit, double value) {
+            return (value * unit.Coefficient) / 28.34952312500033 / this.Coefficient;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace SampleUnitConverter {
 
 
         //上のComboBoxで選択されている値（単位）
-        public MetricUnit CurrentMetricUnit { get; set; }
+        public GrammeUnit CurrentMetricUnit { get; set; }
 
         //下のComboBoxで選択されている値（単位）
         public ImperialUnit CurrentImperialUnit { get; set; }
@@ -41,7 +41,7 @@ namespace SampleUnitConverter {
 
         //コンストラクタ
         public MainWindowViewModel() {
-            this.CurrentMetricUnit = MetricUnit.Units.First();
+            this.CurrentMetricUnit = GrammeUnit.Units.First();
             this.CurrentImperialUnit = ImperialUnit.Units.First();
 
             this.MetricToImperialUnit = new DelegateCommand(
