@@ -34,7 +34,7 @@ namespace CollarChecker {
             public string colorBlue { get; set; }
 
             public override string ToString() {
-                return "R:" + colorRed + " G:" + colorGreen + " B:" + colorBlue ;
+                return $"R:{colorRed,3}  G:{colorGreen,3}  B:{colorBlue,3}";
             }
         }
 
@@ -56,17 +56,19 @@ namespace CollarChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            var colorList = GetColorList();
-            StockColor stock = new StockColor {
-                colorRed = rValue.Text,
-                colorGreen = gValue.Text,
-                colorBlue = bValue.Text
-            };
-            Color color = Color.FromRgb(byte.Parse(stock.colorRed), byte.Parse(stock.colorGreen), byte.Parse(stock.colorBlue));
-            string s = MyColorChecker(stock.colorRed,stock.colorGreen,stock.colorBlue) ?
-                colorList.Where(c => c.Color == color).FirstOrDefault().Name : stock.ToString();
-            stockList.Items.Add(s);
-            stocks.Add(stock);
+            if (rValue.Text != "" && gValue.Text != "" && bValue.Text != "") {
+                var colorList = GetColorList();
+                StockColor stock = new StockColor {
+                    colorRed = rValue.Text,
+                    colorGreen = gValue.Text,
+                    colorBlue = bValue.Text
+                };
+                Color color = Color.FromRgb(byte.Parse(stock.colorRed), byte.Parse(stock.colorGreen), byte.Parse(stock.colorBlue));
+                string s = MyColorChecker(stock.colorRed, stock.colorGreen, stock.colorBlue) ?
+                    colorList.Where(c => c.Color == color).FirstOrDefault().Name : stock.ToString();
+                stockList.Items.Add(s);
+                stocks.Add(stock);
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -81,9 +83,9 @@ namespace CollarChecker {
                 .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
         }
 
-        private Boolean MyColorChecker(string r,string g,string b) {
+        private Boolean MyColorChecker(string r, string g, string b) {
             Boolean match = false;
-            Color color = Color.FromRgb(byte.Parse(r),byte.Parse(g),byte.Parse(b));
+            Color color = Color.FromRgb(byte.Parse(r), byte.Parse(g), byte.Parse(b));
             foreach (var item in colors) {
                 var n = (Color)item.GetValue(item);
                 match = color == n || match;
