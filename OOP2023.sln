@@ -209,6 +209,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisibilityConverter", "WPF\VisibilityConverter\VisibilityConverter.csproj", "{00929ADD-9E0D-4512-BBA6-CE6F360AF460}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapAPI", "FormApps\OpenWeatherMapAPI\OpenWeatherMapAPI.csproj", "{81FC5C02-4C71-4F98-80EE-A4BE32881A5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -487,6 +489,10 @@ Global
 		{00929ADD-9E0D-4512-BBA6-CE6F360AF460}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00929ADD-9E0D-4512-BBA6-CE6F360AF460}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00929ADD-9E0D-4512-BBA6-CE6F360AF460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81FC5C02-4C71-4F98-80EE-A4BE32881A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81FC5C02-4C71-4F98-80EE-A4BE32881A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81FC5C02-4C71-4F98-80EE-A4BE32881A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81FC5C02-4C71-4F98-80EE-A4BE32881A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -577,6 +583,7 @@ Global
 		{A785C300-91F1-4DC4-93CF-5F7C54FD5453} = {FE289ABB-E858-4BA4-9AFA-3CB51123AB29}
 		{3682C41F-813F-4328-B673-77642994A01F} = {FE289ABB-E858-4BA4-9AFA-3CB51123AB29}
 		{00929ADD-9E0D-4512-BBA6-CE6F360AF460} = {FE289ABB-E858-4BA4-9AFA-3CB51123AB29}
+		{81FC5C02-4C71-4F98-80EE-A4BE32881A5C} = {FD2F75CA-5818-4E95-850D-92D1E4D87991}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E17D46B-BB4F-4B6D-8F85-2A4126B38629}
