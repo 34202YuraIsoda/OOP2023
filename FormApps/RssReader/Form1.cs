@@ -70,9 +70,9 @@ namespace RssReader {
                     }).ToList().First().Title.ToString();
                     var rf = new RegistrationForm(titleName);
                     rf.ShowDialog();
-                    var message = channelDatas.Where(c => c.Title == rf.UrlName).Count() == 0 ? rf.Message : "登録済み";
+                    var message = channelDatas.Where(c => c.Title == rf.UrlName).Count() == 0 ? rf.Message : "同じ名前は登録できません";
                     if (rf.ActiveControl.Text == "登録" || rf.ActiveControl.Text == "キャンセル") {// 登録もしくはキャンセルボタン以外は無視
-                        if (channelDatas.Where(c => c.Title == rf.UrlName).Count() == 0) {// 既に登録済みのタイトルは無視
+                        if (channelDatas.Where(c => c.Title == rf.UrlName).Count() == 0 && rf.UrlName != "") {// 既に登録済みのタイトルと空白は無視
                             if (rf.ActiveControl.Text != "キャンセル") {// キャンセルボタンは無視
                                 channelDatas.Add(new ItemData {
                                     Title = rf.UrlName,
@@ -102,6 +102,7 @@ namespace RssReader {
 
         //お気に入り削除
         private void btDeleteFavorite_Click(object sender, EventArgs e) {
+            MessageBox.Show("「" + lbUrlTitle.Items[lbUrlTitle.SelectedIndex] + "」を削除しました");
             channelDatas.RemoveAt(lbUrlTitle.SelectedIndex);
             lbUrlTitle.Items.RemoveAt(lbUrlTitle.SelectedIndex);
             tbUrl.Text = "";

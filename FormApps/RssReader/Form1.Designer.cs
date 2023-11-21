@@ -225,9 +225,9 @@ namespace RssReader {
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 640);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 12);
+            this.label5.Size = new System.Drawing.Size(94, 12);
             this.label5.TabIndex = 10;
-            this.label5.Text = "お気に入りの記事：";
+            this.label5.Text = "お気に入りのURL：";
             // 
             // Form1
             // 

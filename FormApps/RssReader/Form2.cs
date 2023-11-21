@@ -22,7 +22,7 @@ namespace RssReader {
 
         private void btRegistration_Click(object sender, EventArgs e) {
             UrlName = tbUrlName.Text.Trim();
-            Message = "登録完了";
+            Message = UrlName == "" ? "空白は受け付けません" : "登録完了";
             Close();
         }
 
